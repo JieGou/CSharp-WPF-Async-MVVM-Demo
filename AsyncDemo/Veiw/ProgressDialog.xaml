@@ -8,9 +8,9 @@
         xmlns:global="clr-namespace:AsyncDemo"
         mc:Ignorable="d"
         Title="{Binding Path=ViewTitle}"
-        Height="60" 
+        Height="60"
         Width="200"
-        ResizeMode="NoResize" 
+        ResizeMode="NoResize"
         WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterOwner"
         global:WindowBehaviour.HideCloseButton="True">
@@ -18,8 +18,6 @@
         <vm:ProgressDialogViewModel />
     </Window.DataContext>
     <Grid>
-        <ProgressBar 
-            x:Name="ProgressBar" 
-            IsIndeterminate="True" />
+        <ProgressBar x:Name="ProgressBar" IsIndeterminate="True" />
     </Grid>
 </Window>

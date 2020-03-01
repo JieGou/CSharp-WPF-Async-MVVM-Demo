@@ -1,9 +1,18 @@
-﻿
-namespace AsyncDemo.Services
+﻿namespace AsyncDemo.Services
 {
-    interface IDialogService
+    /// <summary>
+    /// 窗口对话框的接口
+    /// </summary>
+    internal interface IDialogService
     {
+        /// <summary>
+        /// 关闭对话框
+        /// </summary>
         void CloseDialog();
+
+        /// <summary>
+        /// 显示对话框
+        /// </summary>
         void ShowDialog();
     }
 }

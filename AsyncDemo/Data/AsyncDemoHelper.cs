@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace AsyncDemo.Data
 {
+    /// <summary>
+    /// 异步帮助类
+    /// </summary>
     public class AsyncDemoHelper
     {
         /// <summary>
-        /// Event handler to route arguments to any listeners 
+        /// Event handler to route arguments to any listeners
         /// </summary>
         public event EventHandler<WorkPerformedEventArgs> WorkPerformed;
 
@@ -18,7 +21,6 @@ namespace AsyncDemo.Data
         /// <returns>The returned string from subtasks</returns>
         public async Task<string> DoStuffAsync()
         {
-
             // keep calling back with updates. This calls back to viewmodel and updates
             // the output each tome it loops
             await DoLongRunningTaskWithCallbacks();
@@ -34,7 +36,7 @@ namespace AsyncDemo.Data
         /// <returns></returns>
         private async Task DoLongRunningTaskWithCallbacks()
         {
-            await Task.Run(()=>
+            await Task.Run(() =>
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -44,7 +46,6 @@ namespace AsyncDemo.Data
                 }
             });
         }
-
 
         /// <summary>
         /// Callback fired to send data back to the viewmodel

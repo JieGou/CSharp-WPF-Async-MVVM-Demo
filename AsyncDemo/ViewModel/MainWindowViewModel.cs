@@ -15,16 +15,44 @@ using System.Windows.Threading;
 
 namespace AsyncDemo.ViewModel
 {
-    class MainWindowViewModel : ViewModelBase
+    internal class MainWindowViewModel : ViewModelBase
     {
-        AsyncDemoHelper mAsyncDemoHelper;
+        /// <summary>
+        /// 异步Demo类
+        /// </summary>
+        private AsyncDemoHelper mAsyncDemoHelper;
 
+        /// <summary>
+        /// 开始命令
+        /// </summary>
         private RelayCommand mStartDemoCommand;
-        private RelayCommand mClearListCommand;
-        IDialogService mProgressDialogService;
 
+        /// <summary>
+        /// 清除命令
+        /// </summary>
+        private RelayCommand mClearListCommand;
+
+        /// <summary>
+        /// 进度对话框
+        /// </summary>
+        private IDialogService mProgressDialogService;
+
+        /// <summary>
+        /// 开始按钮 文本
+        /// </summary>
+        /// <remarks>
+        /// 从资源来获取
+        /// </remarks>
         public string StartButtonText { get; } = Resources.MainWindowViewModel_StartButtonText;
+
+        /// <summary>
+        /// 清空按钮 文本
+        /// </summary>
+        /// <remarks>
+        /// 从资源来获取
+        /// </remarks>
         public string ClearButtonText { get; } = Resources.MainWindowViewModel_ClearButtonText;
+
         public string ResultTextBlockText { get; } = Resources.MainWindowViewModel_TextBlockText;
 
         /// <summary>
@@ -32,14 +60,18 @@ namespace AsyncDemo.ViewModel
         /// </summary>
         public ObservableCollection<string> ListBox { get; set; }
 
-
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="dialogService"></param>
         public MainWindowViewModel(IDialogService dialogService)
         {
+            //标题 通过资源来赋值
             base.ViewTitle = Resources.MainWindowViewModel_Title;
 
-        // Passing an IDialog service allows us to mock up this service
-        // and unit test this viewmodel with the mock.
-        mProgressDialogService = dialogService;
+            // Passing an IDialog service allows us to mock up this service
+            // and unit test this viewmodel with the mock.
+            mProgressDialogService = dialogService;
 
             ListBox = new ObservableCollection<string>();
             mAsyncDemoHelper = new AsyncDemoHelper();
@@ -60,7 +92,6 @@ namespace AsyncDemo.ViewModel
                 }
 
                 return mStartDemoCommand;
-
             }
         }
 
@@ -78,7 +109,6 @@ namespace AsyncDemo.ViewModel
                 }
 
                 return mClearListCommand;
-
             }
         }
 
@@ -97,7 +127,6 @@ namespace AsyncDemo.ViewModel
             {
                 mProgressDialogService.CloseDialog();
             });
-
         }
 
         /// <summary>
